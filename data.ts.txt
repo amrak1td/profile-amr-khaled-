@@ -1,0 +1,40 @@
+// app/lib/data.ts
+
+import { promises as fs } from 'fs';
+import path from 'path';
+
+// Define the required structure for a portfolio item
+export interface Project {
+  id: number;
+  category: 'designs' | 'logos' | 'drawings' | 'videos';
+  mediaType: 'image' | 'video';
+  title: string;
+  mediaSource: string;
+  description: string;
+}
+
+/**
+ * Fetches all project data from the local JSON file.
+ * This runs securely on the Next.js server/build process.
+ */
+export async function getProjectsData(): Promise<Project> {
+  try {
+    const filePath = path.join(process.cwd(), 'app', 'data', 'projects.json');
+    const jsonData = await fs.readFile(filePath, 'utf8');
+    
+    // Parse the JSON data into the Project array structure
+    const data = JSON.parse(jsonData);
+    
+    // Ensure the data is an array before returning
+    if (!Array.isArray(data)) {
+      console.error("JSON file content is not an array.");
+      return;
+    }
+    
+    return data as Project;
+  } catch (error) {
+    console.error("Error reading or parsing projects.json:", error);
+    // Return an empty array on failure
+    return;
+  }
+}

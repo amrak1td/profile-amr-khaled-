@@ -1,0 +1,12 @@
+{
+  "name": "ar-td7-portfolio",
+  // ... باقي الملف ...
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export"  <-- أضف هذا السطر
+  },
+  // ... باقي الملف ...
+}

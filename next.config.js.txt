@@ -1,0 +1,15 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // تفعيل خاصية التصدير الساكن
+  output: 'export',
+  
+  // يجب أن تتطابق هذه القيمة تماماً مع اسم المستودع: /Portfolio-TD7
+  basePath: '/Portfolio-TD7',
+  
+  // مهم جداً: يجب أن يتم تعطيل ضغط الصور، وإلا لن تعمل على GitHub Pages
+  images: {
+    unoptimized: true,
+  },
+};
+
+module.exports = nextConfig;

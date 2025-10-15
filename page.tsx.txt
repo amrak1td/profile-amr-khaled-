@@ -1,0 +1,51 @@
+// app/page.tsx
+
+import Link from 'next/link';
+
+const CategoryCard = ({ title, description, href }: { title: string, description: string, href: string }) => (
+  <Link 
+    href={href} 
+    className="block p-6 border border-gray-200 rounded-lg shadow-xl hover:shadow-orange-400/50 transition duration-300 transform hover:scale-[1.02] bg-white"
+  >
+    <h2 className="text-2xl font-semibold text-gray-800 mb-2">{title} &rarr;</h2>
+    <p className="text-gray-600">{description}</p>
+  </Link>
+);
+
+export default function HomePage() {
+  return (
+    <div className="min-h-[90vh] bg-gray-50 flex flex-col items-center justify-center p-8">
+      <header className="text-center mb-12">
+        <h1 className="text-6xl font-extrabold text-gray-900 mb-4">
+          Welcome to Ar/Td7 Portfolio
+        </h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Showcasing my latest work across digital design, branding, and motion media.
+        </p>
+      </header>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl w-full">
+        <CategoryCard 
+          title="Designs" 
+          description="View my UI/UX, Web, and Application design projects." 
+          href="/designs" 
+        />
+        <CategoryCard 
+          title="Logos" 
+          description="Explore professional brand identities and logo creation." 
+          href="/logos" 
+        />
+        <CategoryCard 
+          title="Drawings" 
+          description="Gallery of my digital sketches, illustrations, and art." 
+          href="/drawings" 
+        />
+        <CategoryCard 
+          title="Videos" 
+          description="Check out my motion graphics and video editing work." 
+          href="/videos" 
+        />
+      </div>
+    </div>
+  );
+}
